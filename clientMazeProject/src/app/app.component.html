@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span>Maze Mania</span>
+  <!-- This fills the remaining space of the current row -->
+  <span style="flex: 1 1 auto;"></span>
+  <button mat-button [matMenuTriggerFor]="appMenu" align="end">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu #appMenu="matMenu" xPosition="after">
+  <button mat-menu-item [routerLink]="['home']">Home</button>
+  <button mat-menu-item [routerLink]="['achievements']">Achievements</button>
+  <button mat-menu-item [routerLink]="['top']">Top Players</button>
+  <button mat-menu-item [routerLink]="['store']">Store</button>
+  <button mat-menu-item [routerLink]="['levels']">Levels</button>
+</mat-menu>
+<router-outlet></router-outlet>
