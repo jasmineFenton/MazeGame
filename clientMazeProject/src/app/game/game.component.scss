@@ -1,0 +1,17 @@
+.container{
+  background-image: url(../../assets/images/background.png);
+  background-repeat: no-repeat;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: 5px;
+  margin-left: 5px;
+  max-width: 9000px;
+  overflow:hidden;
+  min-height:4000px;
+}
+.msg{
+  color: maroon;
+  font-family: "Arial Black";
+  font-size: large;
+  text-align-all: match-parent;
+}

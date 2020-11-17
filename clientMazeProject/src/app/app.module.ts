@@ -13,13 +13,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { HomeComponent } from './home/home.component';
 import { TopPlayersComponent } from './top-players/top-players.component';
+import { GameComponent } from './game/game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AchievementsComponent,
     HomeComponent,
-    TopPlayersComponent
+    TopPlayersComponent,
+    GameComponent
   ],
     imports: [
       BrowserModule,
