@@ -14,6 +14,8 @@ import { AchievementsComponent } from './achievements/achievements.component';
 import { HomeComponent } from './home/home.component';
 import { TopPlayersComponent } from './top-players/top-players.component';
 import { GameComponent } from './game/game.component';
+import { LoginComponent } from './login/login.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,18 +23,20 @@ import { GameComponent } from './game/game.component';
     AchievementsComponent,
     HomeComponent,
     TopPlayersComponent,
-    GameComponent
+    GameComponent,
+    LoginComponent
   ],
     imports: [
-      BrowserModule,
-      AppRoutingModule,
-      BrowserAnimationsModule,
-      BrowserModule,
-      MatButtonModule,
-      MatMenuModule,
-      MatCardModule,
-      MatToolbarModule,
-      MatIconModule
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatIconModule,
+        FormsModule
     ],
 
   providers: [],
