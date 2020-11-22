@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterViewInit, HostListener } from '@angular/core';
 import { Cell, Maze, keyboardMap } from './models';
 import { environment } from 'src/environments/environment';
+import { NavigationStart, Router } from '@angular/router';
+import {Observable} from "rxjs";
+import {DialogService} from "../services/dialog.service";
 
 // maze code taken from https://github.com/changhuixu/angular-maze
 
@@ -9,37 +12,45 @@ import { environment } from 'src/environments/environment';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
+
 export class GameComponent implements OnInit, AfterViewInit {
   row = 15;
   col = 15;
   private maze: Maze;
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
-  private readonly cellSize = 20; // length of cell edge
-  private readonly cellEdgeThickness = 2; // thickness of cell edge
-  private readonly cellBackground = '#FFFFFF';
+  private readonly cellSize = 50; // length of cell edge
+  private readonly cellEdgeThickness = 5; // thickness of cell edge
+  private readonly cellBackground = '#578756';
   private readonly solutionPathColor = '#FF7575';
   private readonly myPathColor = '#4080FF';
-  private readonly myPathThickness = 10;
+  private readonly myPathThickness = 15;
   private readonly solutionPathThickness = 3;
   private gameOver = false;
   private myPath: Cell[] = [];
   private currentCell: Cell;
   showTestButton = false;
   busy = false;
+  private routeSub: any;
 
-  constructor() {
+  constructor(public dialogService: DialogService) {
     if (!environment.production) {
       this.showTestButton = true;
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   ngAfterViewInit(): void {
     this.canvas = (document.getElementById('maze') as HTMLCanvasElement);
     this.ctx = this.canvas.getContext('2d');
     this.drawMaze();
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    return this.dialogService.confirm('Would you like to save progress?');
   }
 
   drawMaze(): void {
@@ -220,8 +231,7 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
   private hooray(): void {
-    // const audio = new Audio('assets/KidsCheering.mp3');
-    // audio.play();
+    alert('You Did It! You saved the wise old wizard!');
   }
 
   private validateInputs(): void {

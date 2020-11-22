@@ -5,12 +5,13 @@ import {AchievementsComponent} from './achievements/achievements.component';
 import {TopPlayersComponent} from './top-players/top-players.component';
 import {GameComponent} from './game/game.component';
 import {LoginComponent} from './login/login.component';
+import {CanDeactivateGuard} from './services/can-deactivate-guard.service';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'achievements', component: AchievementsComponent},
   {path: 'top-players', component: TopPlayersComponent},
-  {path: 'game', component: GameComponent},
+  {path: 'game', component: GameComponent, canDeactivate: [CanDeactivateGuard]},
   {path: 'login', component: LoginComponent},
   {path: '', component: HomeComponent}
 ];

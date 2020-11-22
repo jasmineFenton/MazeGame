@@ -15,7 +15,9 @@ import { HomeComponent } from './home/home.component';
 import { TopPlayersComponent } from './top-players/top-players.component';
 import { GameComponent } from './game/game.component';
 import { LoginComponent } from './login/login.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
+import {DialogService} from "./services/dialog.service";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import {FormsModule} from '@angular/forms';
         FormsModule
     ],
 
-  providers: [],
+  providers: [CanDeactivateGuard, DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
