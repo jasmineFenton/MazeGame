@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import {DialogService} from "./services/dialog.service";
+import { StoreComponent } from './store/store.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {DialogService} from "./services/dialog.service";
     HomeComponent,
     TopPlayersComponent,
     GameComponent,
-    LoginComponent
+    LoginComponent,
+    StoreComponent
   ],
     imports: [
         BrowserModule,
