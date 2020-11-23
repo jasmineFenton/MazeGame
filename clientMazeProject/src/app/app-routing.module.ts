@@ -6,6 +6,7 @@ import {TopPlayersComponent} from './top-players/top-players.component';
 import {GameComponent} from './game/game.component';
 import {LoginComponent} from './login/login.component';
 import {CanDeactivateGuard} from './services/can-deactivate-guard.service';
+import { StoreComponent} from './store/store.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'top-players', component: TopPlayersComponent},
   {path: 'game', component: GameComponent, canDeactivate: [CanDeactivateGuard]},
   {path: 'login', component: LoginComponent},
+  {path: 'store', component: StoreComponent},
   {path: '', component: HomeComponent}
 ];
 
