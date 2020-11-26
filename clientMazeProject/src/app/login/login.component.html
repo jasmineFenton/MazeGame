@@ -1,2 +1,24 @@
-<p>Login to view your achievements and progress</p>
-<p>{{users}}</p>
+<form [formGroup]="loginForm">
+  <h1>Login</h1>
+  <div layout="row">
+    <mat-form-field flex>
+      <input matInput placeholder="Email" type="email" formControlName="email" email>
+      <mat-error *ngIf="email.errors && (email.dirty || email.touched)" align="end" [ngStyle]="{'color': 'red'}">
+        <p *ngIf="email.hasError('required')">Email is required.</p>
+        <p *ngIf="!email.hasError('required')">needs format - example@ex.ex</p> </mat-error>
+    </mat-form-field>
+  </div>
+  <div layout="row">
+    <mat-form-field>
+      <input matInput placeholder="Password" type="text" required formControlName="password">
+      <mat-error *ngIf="password.errors && (password.dirty || password.touched)" align="end" [ngStyle]="{'color': 'red'}"> Password is required </mat-error>
+    </mat-form-field>
+  </div>
+    <div class="mat-pad-sm">
+    <span>
+      <button mat-raised-button type="button">Submit</button>
+    </span>
+  </div>
+</form>
+
+

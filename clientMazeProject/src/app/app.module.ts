@@ -15,7 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { TopPlayersComponent } from './top-players/top-players.component';
 import { GameComponent } from './game/game.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import {DialogService} from "./services/dialog.service";
 import { StoreComponent } from './store/store.component';
@@ -30,18 +30,19 @@ import { StoreComponent } from './store/store.component';
     LoginComponent,
     StoreComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        BrowserModule,
-        MatButtonModule,
-        MatMenuModule,
-        MatCardModule,
-        MatToolbarModule,
-        MatIconModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
 
   providers: [CanDeactivateGuard, DialogService],
   bootstrap: [AppComponent]
