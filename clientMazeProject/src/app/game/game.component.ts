@@ -2,8 +2,8 @@ import { Component, OnInit, AfterViewInit, HostListener } from '@angular/core';
 import { Cell, Maze, keyboardMap } from './models';
 import { environment } from 'src/environments/environment';
 import { NavigationStart, Router } from '@angular/router';
-import {Observable} from "rxjs";
-import {DialogService} from "../services/dialog.service";
+import {Observable} from 'rxjs';
+import {DialogService} from '../services/dialog.service';
 
 // maze code taken from https://github.com/changhuixu/angular-maze
 

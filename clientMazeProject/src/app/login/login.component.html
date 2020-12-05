@@ -1,11 +1,12 @@
 <form [formGroup]="loginForm">
+  <mat-card>
   <h1>Login</h1>
   <div layout="row">
     <mat-form-field flex>
-      <input matInput placeholder="Email" type="email" formControlName="email" email>
       <mat-error *ngIf="email.errors && (email.dirty || email.touched)" align="end" [ngStyle]="{'color': 'red'}">
         <p *ngIf="email.hasError('required')">Email is required.</p>
         <p *ngIf="!email.hasError('required')">needs format - example@ex.ex</p> </mat-error>
+      <input matInput placeholder="Email" type="email" formControlName="email" email>
     </mat-form-field>
   </div>
   <div layout="row">
@@ -16,9 +17,19 @@
   </div>
     <div class="mat-pad-sm">
     <span>
-      <button mat-raised-button type="button">Submit</button>
+      <button mat-raised-button type="button" (click)="login()">Submit</button>
     </span>
   </div>
+<!--    example of accessing user data below-->
+<!--  <div>-->
+<!--    Current Users:-->
+<!--    <mat-form-field flex>-->
+<!--      <mat-select placeholder="Choose User" formControlName="userlist">-->
+<!--        <mat-option *ngFor="let user of data[0]" [value]="user">{{user["email"] - user["password"]}}</mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
+<!--  </div>-->
+  </mat-card>
 </form>
 
 

@@ -5,8 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-
+import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,8 +16,12 @@ import { GameComponent } from './game/game.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
-import {DialogService} from "./services/dialog.service";
+import {DialogService} from './services/dialog.service';
 import { StoreComponent } from './store/store.component';
+import {HttpClientModule} from '@angular/common/http';
+import {MatInputModule} from '@angular/material/input';
+import {MatOptionModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -35,13 +38,18 @@ import { StoreComponent } from './store/store.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatFormFieldModule,
     MatButtonModule,
-    MatMenuModule,
     MatCardModule,
+    MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    FormsModule,
-    ReactiveFormsModule
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule
   ],
 
   providers: [CanDeactivateGuard, DialogService],
