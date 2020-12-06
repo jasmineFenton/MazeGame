@@ -18,6 +18,11 @@
 <!--            <input id="nRow" type="number" [(ngModel)]="row" min="1" max="500" />-->
 <!--            <label for="nCol"># Columns</label>-->
 <!--            <input id="nCol" type="number" [(ngModel)]="col" min="1" max="500" />-->
+
+            <button (click)='startTimer()'>Start Timer</button>
+            <button (click)='pauseTimer()'>Pause</button>
+
+            <p>{{timeLeft}} Seconds Left....</p>
             <button type="button" (click)="drawMaze()" [disabled]="busy">
               New Maze
             </button>

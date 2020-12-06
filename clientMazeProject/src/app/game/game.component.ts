@@ -32,6 +32,8 @@ export class GameComponent implements OnInit, AfterViewInit {
   showTestButton = false;
   busy = false;
   private routeSub: any;
+  timeLeft = 120;
+  interval;
 
   constructor(public dialogService: DialogService) {
     if (!environment.production) {
@@ -87,6 +89,7 @@ export class GameComponent implements OnInit, AfterViewInit {
     this.ctx.moveTo(0, this.cellSize / 2);
     this.ctx.lineTo(this.cellSize / 2, this.cellSize / 2);
     this.ctx.stroke();
+    this.startTimer();
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -189,6 +192,26 @@ export class GameComponent implements OnInit, AfterViewInit {
       );
     }
     this.ctx.stroke();
+  }
+  startTimer(): void {
+    this.interval = setInterval(() => {
+      if (this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.timeLeft = 120;
+
+
+      }
+      if (this.timeLeft === 0)
+      {
+        alert('Timer ended, please try again!');
+      }
+
+    }, 1000);
+  }
+
+  pauseTimer(): void {
+    clearInterval(this.interval);
   }
 
   private draw(cell: Cell): void {
