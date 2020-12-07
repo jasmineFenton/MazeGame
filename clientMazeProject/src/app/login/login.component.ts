@@ -18,16 +18,19 @@ export class LoginComponent implements OnInit {
   password: FormControl;
   users: Observable<User[]>;
   usersdata: User[];
+  userlist: FormControl;
   data: any[];
   msg: string;
   constructor(public userService: UserService) {
     this.email = new FormControl('', Validators.compose([Validators.required]));
     this.password = new FormControl('', Validators.compose([Validators.required]));
+    this.userlist = new FormControl('', Validators.compose([Validators.required]));
   }
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: this.email,
       password: this.password,
+      userlist: this.userlist
     });
     this.users = this.userService.getAll().pipe(
       catchError(error => {
@@ -46,7 +49,8 @@ export class LoginComponent implements OnInit {
     }
     this.loginForm.patchValue({
      email: this.email.value,
-     password: this.password.value
+     password: this.password.value,
+      userlist: this.userlist.value
    });
   }
   login(): void {
