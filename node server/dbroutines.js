@@ -34,7 +34,9 @@ const deleteOne = (db, coll, criteria) =>
 module.exports = {
   loadDB,
   addOne,
+  updateOne,
   deleteAll,
+  deleteOne,
   findOne,
   findAll,
   findUniqueValues,

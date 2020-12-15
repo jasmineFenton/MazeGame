@@ -8,7 +8,7 @@ export class CanDeactivateGuard implements CanDeactivate<CanComponentDeactive> {
                 route: ActivatedRouteSnapshot,
                 state: RouterStateSnapshot): any {
     const url: string = state.url;
-    console.log('URL: ' + url);
+    // console.log('URL: ' + url);
 
     return component.canDeactivate ? component.canDeactivate() : true;
   }

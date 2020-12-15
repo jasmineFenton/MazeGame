@@ -1,9 +1,12 @@
 import { Component, OnInit, AfterViewInit, HostListener } from '@angular/core';
 import { Cell, Maze, keyboardMap } from './models';
 import { environment } from 'src/environments/environment';
-import { NavigationStart, Router } from '@angular/router';
 import {Observable} from 'rxjs';
 import {DialogService} from '../services/dialog.service';
+import {LoggedService} from '../logged.service';
+import {UserService} from '../login/user.service';
+import {User} from '../login/user';
+import {HttpClient} from '@angular/common/http';
 
 // maze code taken from https://github.com/changhuixu/angular-maze
 
@@ -31,18 +34,30 @@ export class GameComponent implements OnInit, AfterViewInit {
   private currentCell: Cell;
   showTestButton = false;
   busy = false;
-  private routeSub: any;
   timeLeft = 120;
   interval;
-
-  constructor(public dialogService: DialogService) {
+  selectedEmail: string;
+  selectedId: string;
+  users: User[];
+  selectedUser: User;
+  constructor(public dialogService: DialogService, public loggedService: LoggedService, public userService: UserService,
+              private http: HttpClient) {
     if (!environment.production) {
       this.showTestButton = true;
     }
   }
 
   ngOnInit(): void {
-
+    this.loggedService.currentEmail.subscribe(loggedemail =>
+      (this.selectedEmail = loggedemail)
+    );
+    this.loggedService.currentId.subscribe(loggedid =>
+      (this.selectedId = loggedid)
+    );
+    this.loggedService.currentUsers.subscribe(users =>
+      (this.users = users)
+    );
+    // this.selectedUser = this.users.find(user => user._id === this.selectedId);
   }
 
   ngAfterViewInit(): void {
@@ -254,7 +269,21 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
   private hooray(): void {
-    alert('You Did It! You saved the wise old wizard!');
+    // everytime the player completes a maze update their stats in the database
+    // alert('You Did It! You saved the wise old wizard!');
+    const selectedUser = this.users.find(user => user.email === this.selectedEmail);
+    // this.selectedUser.mazecompletions++;
+    selectedUser.mazecompletions++;
+    this.userService.update(selectedUser).subscribe(payload => {
+      if (payload._id !== ''){
+        console.log('player stats updated');
+      }
+      else{
+        console.log('player stats not updated - server error');
+      }
+    });
+    // this.http.put('http://localhost:5000', selectedUser);
+    // this.userService.update(selectedUser);
   }
 
   private validateInputs(): void {

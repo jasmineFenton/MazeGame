@@ -3,8 +3,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { User } from '../login/user';
 import {Observable, of} from 'rxjs';
 import {UserService} from '../login/user.service';
-import {catchError} from 'rxjs/operators';
-import { MatListModule } from '@angular/material/list';
+import {catchError, filter} from 'rxjs/operators';
+import {MatSortModule} from '@angular/material/sort';
+
 @Component({
   selector: 'app-top-players',
   templateUrl: './top-players.component.html',
@@ -35,8 +36,17 @@ export class TopPlayersComponent implements OnInit {
     for (const item of this.data) {
       this.usersdata.push(item);
     }
-
-    //this.users$ = this.users$.pipe(map)
-
+    // function sortByMazes( a, b): number{
+    //   if (a.mazecompletions < b.mazecompletions){
+    //     return -1;
+    //   }
+    //   if (a.mazecompletions > b.mazecompletions){
+    //     return 1;
+    //   }
+    //   return 0;
+    // }
+    // this.data = this.data.sort(sortByMazes);
+    // console.log(this.data);
+    // this.users$ = this.users$.pipe(map)
   }
 }

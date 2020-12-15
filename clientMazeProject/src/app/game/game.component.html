@@ -5,11 +5,18 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <div *ngIf="selectedEmail!== null && selectedId!== null">
+      <p>Welcome back - {{selectedEmail}}</p>
+    </div>
     <div class="msg">
-        <p>~We are about to bring you on the daring quest to aid the old wise wizard back to
-          his study. He is lost and someone has used a confusion spell on him. It is your mission
-          to navigate through the winding trails of Hallows Forest to get him back to safety before
-          something dreadful happens to the wise old wizard.~</p>
+<!--        <p>~We are about to bring you on the daring quest to aid the old wise wizard back to-->
+<!--          his study. He is lost and someone has used a confusion spell on him. It is your mission-->
+<!--          to navigate through the winding trails of Hallows Forest to get him back to safety before-->
+<!--          something dreadful happens to the wise old wizard.~</p>-->
+      <p>
+        ~Time to test your maze speed skills. You start with 120 seconds on the clock, solve as many mazes as you can before the time runs out.
+        everytime you solve a maze, we'll update your statistics. Check the Top Players page to see who has the solve the most amongst our current player base.
+      </p>
     </div>
      <div class="container">
         <div style="text-align: center;">
@@ -35,6 +42,9 @@
 <!--            >-->
 <!--              Test-->
 <!--            </button>-->
+<!--            <div *ngIf="selectedId!==null">-->
+<!--              <p>Mazes completed: {{selectedUser.mazecompletions}}</p>-->
+<!--            </div>-->
           </div>
           <section>
             <canvas id="maze"></canvas>

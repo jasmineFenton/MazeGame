@@ -3,7 +3,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { User } from './user';
 import {Observable, of} from 'rxjs';
 import {UserService} from './user.service';
+import {LoggedService} from '../logged.service';
 import {catchError} from 'rxjs/operators';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
   userlist: FormControl;
   data: any[];
   msg: string;
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService, public loggedService: LoggedService,  private router: Router) {
     this.email = new FormControl('', Validators.compose([Validators.required]));
     this.password = new FormControl('', Validators.compose([Validators.required]));
     this.userlist = new FormControl('', Validators.compose([Validators.required]));
@@ -54,9 +56,13 @@ export class LoginComponent implements OnInit {
    });
   }
   login(): void {
+    let selectedUser = null;
     if (this.data.find(item => item[0].email === this.email.value && item[0].password === this.password.value))
     {
+      selectedUser = this.data.find(item => item[0].email === this.email.value && item[0].password === this.password.value)[0];
       alert('successfully logged in!');
+      this.loggedService.changeMessage(selectedUser['email'], selectedUser['_id'], this.data[0]);
+      this.router.navigate(['/game']).then();
     }
     else
     {

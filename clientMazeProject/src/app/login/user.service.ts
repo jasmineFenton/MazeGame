@@ -4,7 +4,7 @@ import { BASEURL } from '../constants';
 import { User } from './user';
 import { GenericHttpService} from '../generic-http.service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService extends GenericHttpService<User>{
   constructor(public http: HttpClient) {
